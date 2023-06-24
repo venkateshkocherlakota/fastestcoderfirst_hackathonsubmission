@@ -1,5 +1,4 @@
 const tableBody = document.getElementById("table-body");
-
 /*
     represents array of json objects
     which have a structure like this:
@@ -27,6 +26,10 @@ const financialEntries = [
     type: "Expense",
   },
 ];
+
+// Initial population of the table with seed data
+populateTable(financialEntries);
+$("#edit-modal").modal("hide");
 
 /*
     This function adds rows to the table
@@ -195,8 +198,8 @@ function renderBalanceChart() {
   let chart = bb.generate({
     data: {
         columns: [
-            ["Outflow", calculateTotalExpense()],
-            ["Inflow", calcullateTotalIncome()],
+            ["💵 Outflow", calculateTotalExpense()],
+            ["💵 Inflow", calcullateTotalIncome()],
         ],
         type: "donut",
         onclick: function (d, i) {
@@ -245,8 +248,3 @@ function updateRowById() {
   populateTable();
   $("#edit-modal").modal("hide");
 }
-
-// Initial population of the table with seed data
-$("#edit-modal").modal("hide");
-
-populateTable(financialEntries);
