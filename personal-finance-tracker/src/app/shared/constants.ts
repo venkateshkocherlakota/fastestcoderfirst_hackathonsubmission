@@ -1,0 +1,1 @@
+export const FIN_DATA_KEY = 'everything-till-now';
