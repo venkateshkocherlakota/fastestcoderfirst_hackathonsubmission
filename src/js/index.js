@@ -44,10 +44,10 @@ function populateTable() {
         newCell.style.fontWeight = "bold";
         if (row.type == "Income") {
           newCell.style.color = "green";
-          newCell.innerHTML = "+ $" + row[key];
+          newCell.innerText = "+ $" + row[key];
         } else {
           newCell.style.color = "red";
-          newCell.innerHTML = "- $" + row[key];
+          newCell.innerText = "- $" + row[key];
         }
       } else newCell.innerText = row[key];
       newRow.appendChild(newCell);
@@ -56,7 +56,7 @@ function populateTable() {
 
     // Add Edit Button
     const btnEdit = document.createElement("BUTTON");
-    btnEdit.innerHTML = "Edit";
+    btnEdit.innerText = "Edit";
     btnEdit.className = "btn btn-primary btn-xs";
     const editBtnClickHandler = function () {
         // set value of description
@@ -75,7 +75,7 @@ function populateTable() {
 
     // Add Delete Button
     const btnDelete = document.createElement("BUTTON");
-    btnDelete.innerHTML = "Delete";
+    btnDelete.innerText = "Delete";
     btnDelete.style.marginLeft = "5px";
     btnDelete.className = "btn btn-danger btn-xs";
     const removeBtnClickHandler = function () {
