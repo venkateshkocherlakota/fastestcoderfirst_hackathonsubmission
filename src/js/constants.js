@@ -25,8 +25,3 @@ const financialEntries = [
     type: "Expense",
   },
 ];
-
-/*
-    table reference from the DOM
-*/
-const tableBody = document.getElementById("table-body");
