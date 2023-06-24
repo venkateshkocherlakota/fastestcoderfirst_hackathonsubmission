@@ -14,7 +14,7 @@ const tableBody = document.getElementById("table-body");
 const financialEntries = [
   {
     id: 1,
-    description: "Salary for month May",
+    description: "Salary for month May (Edit me)",
     amount: 5000,
     date: "2021-01-01",
     type: "Income",
@@ -168,6 +168,52 @@ function updateBalance() {
   // change color of balance based on value
   document.getElementById("current-balance").style.color =
     balance > 0 ? "green" : balance == 0 ? "black" : "red";
+  renderBalanceChart()
+}
+
+function calculateTotalExpense() {
+  let totalExpense = 0;
+  for (let row of financialEntries) {
+    if (row.type == "Expense") {
+      totalExpense += Number.parseFloat(row.amount);
+    }
+  }
+  return totalExpense;
+}
+
+function calcullateTotalIncome() {
+  let totalIncome = 0;
+  for (let row of financialEntries) {
+    if (row.type == "Income") {
+      totalIncome += Number.parseFloat(row.amount);
+    }
+  }
+  return totalIncome;
+}
+
+function renderBalanceChart() {
+  let chart = bb.generate({
+    data: {
+        columns: [
+            ["Outflow", calculateTotalExpense()],
+            ["Inflow", calcullateTotalIncome()],
+        ],
+        type: "donut",
+        onclick: function (d, i) {
+            console.log("onclick", d, i);
+        },
+        onover: function (d, i) {
+            console.log("onover", d, i);
+        },
+        onout: function (d, i) {
+            console.log("onout", d, i);
+        },
+    },
+    donut: {
+        title: "Current Status",
+    },
+    bindto: "#donut-chart",
+});
 }
 
 /*
@@ -202,4 +248,5 @@ function updateRowById() {
 
 // Initial population of the table with seed data
 $("#edit-modal").modal("hide");
+
 populateTable(financialEntries);

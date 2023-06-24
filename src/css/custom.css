@@ -1,3 +1,8 @@
 /* Custom CSS */
 @import url(//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css);
 @import url(custom.css);
+
+.radio label {
+    display: inline-block;
+    vertical-align: middle;
+}

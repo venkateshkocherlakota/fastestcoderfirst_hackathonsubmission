@@ -23,19 +23,23 @@
       font-family: 'Poppins';
     }
     </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.css" />
   </head>
   <body>
     <!-- Main Heading -->
     <div class="row clearfix">
-      <div class="col-md-offset-4">
+      <div class="col-md-4 col-md-offset-4">
         <h2 class="site-name">💵 Personal Finance Tracker 💵</h2>
       </div>
     </div>
     <hr />
-	<!-- Current Balance -->
+    <!-- Current Balance -->
 	<header>
 		<!-- place div in center -->
-		<div style="display: flex;justify-content: center; padding: 10px;">
+		<div style="display: flex; justify-content: center; padding: 10px;">
 			<div class="card" style="width: auto; padding: 10px; text-align: center; border-radius: 15px;">
 				<h1>Current Balance</h5>
         <hr />
@@ -43,15 +47,14 @@
         <br/>
 				<a href="#" class="card-link" onclick="updateBalance()">Refresh 🔃</a>
 			</div>
+      <div id="donut-chart" style="width: 200px;"></div>
 		</div>
 	</header>
     <!-- Add Expense/Income Bar -->
     <header>
-      <div class="panel panel-default" style="margin: 15px;">
-        <div class="panel-heading" style="display: flex;justify-content: center; padding: 10px;">
-          <h3 class="panel-title"><b>Add Transaction</b></h3>
-        </div>
-		<div class="panel-body" style="display: flex;justify-content: center; padding: 10px;">
+      <div style="margin: 15px;">
+
+		<div style="display: flex;justify-content: center; padding: 10px;">
           <form>
             <div class="form-group" style="display: flex;">
             <!-- Input for getting description from user -->
