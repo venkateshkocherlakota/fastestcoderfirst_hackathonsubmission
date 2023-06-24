@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Finance Tracker</title>
     <!-- Bootstrap CDN -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -24,34 +22,43 @@
       </div>
     </div>
     <hr />
+	<!-- Current Balance -->
+	<header>
+		<!-- place div in center -->
+		<div style="display: flex;justify-content: center; padding: 10px;">
+			<div class="card" style="width: auto; padding: 10px; text-align: center;">
+				<h1>Current Balance</h5>
+				<h2 class="card-subtitle mb-2 text-muted" id="current-balance">0</h6>
+				<a href="#" class="card-link" onclick="updateBalance()">Refresh</a>
+			</div>
+		</div>
+	</header>
     <!-- Add Expense/Income Bar -->
     <header>
       <div class="panel panel-default" style="margin: 15px;">
-        <div class="panel-heading">
+        <div class="panel-heading" style="display: flex;justify-content: center; padding: 10px;">
           <h3 class="panel-title">Add Transaction</h3>
         </div>
-        <div class="panel-body">
+		<div class="panel-body" style="display: flex;justify-content: center; padding: 10px;">
           <form>
             <div class="form-group" style="display: flex;">
             <!-- Input for getting description from user -->
-                <input type="email" class="form-control" style="width: 550px;" id="description"
+                <input type="text" required class="form-control" style="width: 550px;" id="description"
                   maxlength="50" aria-describedby="description" placeholder="Provide a small description or a name for this entry in less than 50 characters.">
               <!-- Input for getting amount from user -->
-                <input type="number" class="form-control" style="width: 150px; margin-left: 10px;" id="amount"
+                <input type="number" required class="form-control" style="width: 150px; margin-left: 10px;" id="amount"
                 maxlength="50" aria-describedby="amount" placeholder="Enter Amount">
-			<!-- Radio buttons for getting transaction type from user -->
-			<div style="margin-left: 10px;">
-				<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-secondary active">
-					<input type="radio" name="options" id="expense" autocomplete="off" checked> Expense
-					</label>
-					<label class="btn btn-secondary">
-					<input type="radio" name="options" id="income" autocomplete="off"> Income
-					</label>
+				<!-- Radio buttons for getting transaction type from user -->
+				<div style="margin-left: 10px; margin-top: 5px;">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" checked name="inlineRadioOptions" id="inlineRadio1" value="Expense">
+						<label class="form-check-label" for="inlineRadio1">Expense</label>
+						<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Income">
+						<label class="form-check-label" for="inlineRadio2">Income</label>
+					</div>
 				</div>
-			</div>
-            <!-- Button to save the captured details -->
-                <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Add</button>
+            	<!-- Button to save the captured details -->
+                <input type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="addItemToTable()" value="Add"/>
             </div>
           </form>
       </div>
@@ -65,6 +72,7 @@
 			  <tr>
 				<th scope="col">#</th>
 				<th scope="col">Transaction Description</th>
+				<th scope="col">Amount</th>
 				<th scope="col">Date</th>
 				<th scope="col">Type</th>
 				<th scope="col">Actions</th>
